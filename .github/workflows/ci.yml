@@ -12,7 +12,7 @@ on:
   pull_request:
 
 env:
-  docker_repository: nlpsandbox/date-annotator-example
+  docker_repository: nlpsandbox/covid-symptom-annotator-example
 
 jobs:
   lint:
