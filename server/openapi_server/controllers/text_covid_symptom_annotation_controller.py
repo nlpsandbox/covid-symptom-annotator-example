@@ -17,9 +17,22 @@ def create_text_covid_symptom_annotations(text_covid_symptom_annotation_request=
 
     :rtype: TextCovidSymptomAnnotationResponse
     """
+    res = None
+    status = None
     if connexion.request.is_json:
-        annotation_request = TextCovidSymptomAnnotationRequest.from_dict(connexion.request.get_json())  # noqa: E501
+        try:
+            annotation_request = TextCovidSymptomAnnotationRequest.from_dict(
+                connexion.request.get_json())  # noqa: E501
+            note = annotation_request._note
 
-        note = annotation_request._note
+            annotations = []
 
-    return 'do some magic!'
+            # TODO: Fill in array annotations with TextCovidSymptomAnnotation objects
+
+            res = TextCovidSymptomAnnotationResponse(annotations)
+            status = 200
+        except Exception as error:
+            status = 500
+            res = Error("Internal error", status, str(error))
+
+    return res, status

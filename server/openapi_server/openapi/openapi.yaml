@@ -317,20 +317,6 @@ components:
       - $ref: '#/components/schemas/TextAnnotation'
       - $ref: '#/components/schemas/TextCovidSymptomAnnotation_allOf'
       description: A COVID symptom annotation in a text
-      example:
-        start: 42
-        length: 9
-        text: dry cough
-        condition: cough
-        certainty: positive
-        confidence: 95.5
-      required:
-      - certainty
-      - condition
-      - confidence
-      - length
-      - start
-      - text
       title: TextCovidSymptomAnnotation
       type: object
     TextCovidSymptomAnnotationResponse:
@@ -548,4 +534,7 @@ components:
           - negated
           - possible
           type: string
+      required:
+        - certainty
+        - condition
       type: object
