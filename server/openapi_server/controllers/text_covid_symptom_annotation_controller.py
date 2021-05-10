@@ -1,11 +1,9 @@
 import connexion
-import six
 
 from openapi_server.models.error import Error  # noqa: E501
 from openapi_server.models.text_covid_symptom_annotation_request import TextCovidSymptomAnnotationRequest  # noqa: E501
 from openapi_server.models.text_covid_symptom_annotation_response import TextCovidSymptomAnnotationResponse  # noqa: E501
-from openapi_server.models.text_covid_symptom_annotation import TextCovidSymptomAnnotation
-from openapi_server import util
+from openapi_server.models.text_covid_symptom_annotation import TextCovidSymptomAnnotation # noqa: E501
 import re
 
 

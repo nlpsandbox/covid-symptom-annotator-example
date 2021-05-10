@@ -16,7 +16,8 @@ def get_tool():  # noqa: E501
         version="1.0.2",
         license=License.APACHE_2_0,
         repository="github:nlpsandbox/covid-symptom-annotator-example",
-        description="Example implementation of the NLP Sandbox COVID Symptom Annotator",
+        description="Example implementation of the NLP Sandbox " / 
+                    "COVID Symptom Annotator",
         author="The NLP Sandbox Team",
         author_email="team@nlpsandbox.io",
         url="https://github.com/nlpsandbox/covid-symptom-annotator-example",
