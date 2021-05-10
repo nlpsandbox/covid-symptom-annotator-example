@@ -4,7 +4,23 @@ import six
 from openapi_server.models.error import Error  # noqa: E501
 from openapi_server.models.text_covid_symptom_annotation_request import TextCovidSymptomAnnotationRequest  # noqa: E501
 from openapi_server.models.text_covid_symptom_annotation_response import TextCovidSymptomAnnotationResponse  # noqa: E501
+from openapi_server.models.text_covid_symptom_annotation import TextCovidSymptomAnnotation
 from openapi_server import util
+import re
+
+
+patterns = {'cough': re.compile("cough"), 'fever': re.compile("fever")}
+
+def annot_text(text):
+    annotations = []
+    for ptn_name in patterns:
+        pattern = patterns[ptn_name]
+        match = pattern.search(text)
+        if match:
+            annotations.append(match)
+        
+    return annotations
+    
 
 
 def create_text_covid_symptom_annotations(text_covid_symptom_annotation_request=None):  # noqa: E501
@@ -24,10 +40,14 @@ def create_text_covid_symptom_annotations(text_covid_symptom_annotation_request=
             annotation_request = TextCovidSymptomAnnotationRequest.from_dict(
                 connexion.request.get_json())  # noqa: E501
             note = annotation_request._note
-
+            note._text
             annotations = []
 
-            # TODO: Fill in array annotations with TextCovidSymptomAnnotation objects
+            for ptn_name in patterns:
+                pattern = patterns[ptn_name]
+                matches = pattern.finditer(note._text)
+                add_covid_symptom_annotation(annotations, matches, ptn_name)
+
 
             res = TextCovidSymptomAnnotationResponse(annotations)
             status = 200
@@ -36,3 +56,19 @@ def create_text_covid_symptom_annotations(text_covid_symptom_annotation_request=
             res = Error("Internal error", status, str(error))
 
     return res, status
+
+
+def add_covid_symptom_annotation(annotations, matches, condition):
+    """
+    Converts matches to TextDateAnnotation objects and adds them to the
+    annotations array specified.
+    """
+    for match in matches:
+        annotations.append(TextCovidSymptomAnnotation(
+            start=match.start(),
+            length=len(match[0]),
+            text=match[0],
+            condition=condition,
+            certainty="positive",
+            confidence=95.5
+        ))
