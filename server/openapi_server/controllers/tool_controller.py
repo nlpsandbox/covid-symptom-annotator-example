@@ -13,7 +13,7 @@ def get_tool():  # noqa: E501
     """
     tool = Tool(
         name="covid-symptom-annotator-example",
-        version="1.0.2",
+        version="1.1.0",
         license=License.APACHE_2_0,
         repository="github:nlpsandbox/covid-symptom-annotator-example",
         description="Example of the NLP Sandbox COVID Symptom Annotator",
@@ -21,7 +21,7 @@ def get_tool():  # noqa: E501
         author_email="team@nlpsandbox.io",
         url="https://github.com/nlpsandbox/covid-symptom-annotator-example",
         type="nlpsandbox:covid-symptom-annotator",
-        api_version="1.0.2"
+        api_version="1.1.0"
     )
     return tool, 200
 
@@ -34,4 +34,4 @@ def get_tool_dependencies():  # noqa: E501
 
     :rtype: ToolDependencies
     """
-    return ToolDependencies(tool_dependencies=[]), 200
+    return ToolDependencies(tools=[]), 200

@@ -2,23 +2,24 @@ openapi: 3.0.3
 info:
   contact:
     email: team@nlpsandbox.io
-    name: The NLP Sandbox Team
+    name: NLP Sandbox Team
     url: https://nlpsandbox.io
   description: |
     # Introduction
-    The COVID Symptom Annotator is one of the first NLP Sandbox tools that can be benchmarked on [nlpsandbox.io](https://nlpsandbox.io). A COVID Symptom Annotator takes as input a clinical note and outputs a list of predicted COVID-19 sign and symptom annotations found in the clinical note. This OpenAPI document describes the specification of a COVID Symptom Annotator. This specification includes the schemas of the input and output data, and the conditions that this annotator must meet if you want to benchmark its performance on [nlpsandbox.io](https://nlpsandbox.io).
+    A COVID Symptom Annotator takes as input a clinical note and outputs a list of predicted COVID-19 sign and symptom annotations found in the clinical note. This OpenAPI document describes the specification of a COVID Symptom Annotator. This specification includes the schemas of the input and output data, and the conditions that this annotator must meet if you want to benchmark its performance on [nlpsandbox.io](https://nlpsandbox.io).
     # Getting Started
-    The GitHub repository [nlpsandbox/covid-symptom-annotator-example](https://github.com/nlpsandbox/covid-symptom-annotator-example) provides a simple example implementation of a Python-Flask COVID Symptom Annotator. By the end of the tutorial available in this repository, you will have built a Docker image for a simple COVID Symptom Annotator. You will then be able to submit this image to [nlpsandbox.io](https://nlpsandbox.io) to benchmark its performance.
+    The GitHub repository [nlpsandbox/covid-symptom-annotator-example](https://github.com/nlpsandbox/covid-symptom-annotator-example) provides a simple example implementation of a Python-Flask COVID Symptom Annotator. By the end of the tutorial available in the README, you will have built a Docker image for a simple COVID Symptom Annotator. You will then be able to submit this image to [nlpsandbox.io](https://nlpsandbox.io) to benchmark its performance.
     # Benchmarking Requirements
-    The following conditions must be met by your COVID Symptom Annotator if you want to benchmark its performance on [nlpsandbox.io](https://nlpsandbox.io).
+    Your NLP Sandbox tool must meet the following conditions before evaluating its performance on [nlpsandbox.io](https://nlpsandbox.io).
     - The endpoint `/` must redirect to `/api/v1/tool`.
     - The endpoint `/ui` must redirect to the web interface (UI).
     - The output of this tool must be reproducible: a given input should always
       generate the same output.
 
-    - This tool must not attempt to connect to remote server for reproducibility,
-      robustness, and security reasons. When benchmarked on [nlpsandbox.io](https://nlpsandbox.io),
-      this tool will not be able to connect to remote servers.
+    - To ensure the results are reproducible and robust, and the data are
+      secured, this tool must not connect to any remote server. When benchmarked
+      on [nlpsandbox.io](https://nlpsandbox.io), this tool will not be able to
+      connect to remote servers.
 
     # Examples
     - [COVID Symptom Annotator Example (Python)](https://github.com/nlpsandbox/covid-symptom-annotator-example)
@@ -26,7 +27,7 @@ info:
     name: Apache 2.0
     url: https://github.com/nlpsandbox/nlpsandbox-schemas/blob/develop/LICENSE
   title: NLP Sandbox COVID Symptom Annotator API
-  version: 1.0.2
+  version: 1.1.0
   x-logo:
     url: https://nlpsandbox.github.io/nlpsandbox-schemas/logo.png
 servers:
@@ -274,7 +275,8 @@ components:
       example:
         note:
           identifier: awesome-note
-          text: On 12/26/2020, Ms. Chloe Price met with Dr. Prescott in Seattle.
+          text: |
+            On 12/26/2020, Ms. Chloe Price met with Dr. Prescott in Seattle. She's had a dry cough for almost a week now.
           type: loinc:LP29684-5
           patientId: awesome-patient
       properties:
@@ -317,6 +319,13 @@ components:
       - $ref: '#/components/schemas/TextAnnotation'
       - $ref: '#/components/schemas/TextCovidSymptomAnnotation_allOf'
       description: A COVID symptom annotation in a text
+      example:
+        start: 42
+        length: 9
+        text: dry cough
+        condition: cough
+        certainty: positive
+        confidence: 95.5
       title: TextCovidSymptomAnnotation
       type: object
     TextCovidSymptomAnnotationResponse:
@@ -406,7 +415,7 @@ components:
         authorEmail: author@example.com
         url: https://example.com
         type: nlpsandbox:date-annotator
-        apiVersion: 1.0.2
+        apiVersion: 1.1.0
       properties:
         name:
           description: The tool name
@@ -467,7 +476,7 @@ components:
     ToolDependencies:
       description: A list of tool dependencies
       example:
-        toolDependencies:
+        tools:
         - name: awesome-nlp-tool
           version: 1.0.6
           license: apache-2.0
@@ -477,7 +486,7 @@ components:
           authorEmail: author@example.com
           url: https://example.com
           type: nlpsandbox:date-annotator
-          apiVersion: 1.0.2
+          apiVersion: 1.1.0
         - name: awesome-nlp-tool
           version: 1.0.6
           license: apache-2.0
@@ -487,16 +496,16 @@ components:
           authorEmail: author@example.com
           url: https://example.com
           type: nlpsandbox:date-annotator
-          apiVersion: 1.0.2
+          apiVersion: 1.1.0
       properties:
-        toolDependencies:
+        tools:
           description: A list of tools
           items:
             $ref: '#/components/schemas/Tool'
-          title: toolDependencies
+          title: tools
           type: array
       required:
-      - toolDependencies
+      - tools
       title: ToolDependencies
       type: object
     TextCovidSymptomAnnotation_allOf:
@@ -535,6 +544,6 @@ components:
           - possible
           type: string
       required:
-        - certainty
-        - condition
+      - certainty
+      - condition
       type: object
