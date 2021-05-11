@@ -19,8 +19,8 @@ outputs a list of predicted date annotations found in the clinical note.
 
 ### Specification
 
-- Date Annotator API version: 1.0.2
-- Tool version: 1.0.2
+- Date Annotator API version: 1.1.0
+- Tool version: 1.1.0
 - Docker image: [nlpsandbox/covid-symptom-annotator-example]
 
 ## Model
