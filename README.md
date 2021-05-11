@@ -15,7 +15,8 @@ Example implementation of the [NLP Sandbox COVID Symptom Annotator]
 
 This repository provides a Python-Flask implementation of the [NLP Sandbox COVID
 Symptom Annotator]. This NLP Sandbox tool takes as input a clinical note and
-outputs a list of predicted date annotations found in the clinical note.
+outputs a list of predicted COVID symptom annotations found in the clinical
+note.
 
 ### Specification
 
