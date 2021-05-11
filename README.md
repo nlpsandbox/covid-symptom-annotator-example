@@ -1,29 +1,27 @@
-# NLP Sandbox Date Annotator Example
+# NLP Sandbox COVID Symptom Annotator Example
 
-[![GitHub Release](https://img.shields.io/github/release/nlpsandbox/date-annotator-example.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/date-annotator-example/releases)
-[![GitHub CI](https://img.shields.io/github/workflow/status/nlpsandbox/date-annotator-example/ci.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/date-annotator-example/actions)
-[![GitHub License](https://img.shields.io/github/license/nlpsandbox/date-annotator-example.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/date-annotator-example/blob/develop/LICENSE)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nlpsandbox/date-annotator-example.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/nlpsandbox/date-annotator-example)
+[![GitHub Release](https://img.shields.io/github/release/nlpsandbox/covid-symptom-annotator-example.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/covid-symptom-annotator-example/releases)
+[![GitHub CI](https://img.shields.io/github/workflow/status/nlpsandbox/covid-symptom-annotator-example/ci.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/covid-symptom-annotator-example/actions)
+[![GitHub License](https://img.shields.io/github/license/nlpsandbox/covid-symptom-annotator-example.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/nlpsandbox/covid-symptom-annotator-example/blob/develop/LICENSE)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nlpsandbox/covid-symptom-annotator-example.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/nlpsandbox/covid-symptom-annotator-example)
 [![Discord](https://img.shields.io/discord/770484164393828373.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=Discord&logo=discord)](https://nlpsandbox.io/discord "Realtime support / chat with the community and the team")
-[![nlpsandbox.io](https://img.shields.io/badge/nlp_sandbox-leaderboard-blue.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAuMiAxNS40VjguNmMxLjktLjUgMy4zLTIuMiAzLjMtNC4yIDAtMi40LTItNC40LTQuNC00LjRzLTQuNCAyLTQuNCA0LjRjMCAuNS4xIDEgLjMgMS41TDguNSA5LjVjLS43LTEuMi0yLjEtMi0zLjYtMi0yLjQgMC00LjQgMi00LjQgNC40czIgNC40IDQuNCA0LjRjMS4zIDAgMi40LS41IDMuMi0xLjRsNi43IDMuOWMtLjEuMi0uMS41LS4xLjggMCAyLjQgMiA0LjQgNC40IDQuNHM0LjQtMiA0LjQtNC40YzAtMi0xLjQtMy43LTMuMy00LjJ6TTQuOSAxNC4yYy0xLjIgMC0yLjItMS0yLjItMi4yczEtMi4yIDIuMi0yLjIgMi4yIDEgMi4yIDIuMi0xIDIuMi0yLjIgMi4yem0xNC4yLTEyYzEuMiAwIDIuMiAxIDIuMiAyLjJzLTEgMi4yLTIuMiAyLjItMi4yLTEtMi4yLTIuMiAxLTIuMiAyLjItMi4yem0tMy40IDE0LjZMOS4yIDEzYy4xLS4zLjEtLjcuMS0xdi0uM2w3LTRjLjUuNCAxLjEuNyAxLjcuOXY2LjhjLS45LjItMS43LjctMi4zIDEuNHptMy40IDVjLTEuMiAwLTIuMi0xLTIuMi0yLjJzMS0yLjIgMi4yLTIuMiAyLjIgMSAyLjIgMi4yLTEgMi4yLTIuMiAyLjJ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+)](https://nlpsandbox.io/tools/date-annotator/leaderboard "View the performance of this tool on nlpsandbox.io")
+[![nlpsandbox.io](https://img.shields.io/badge/nlp_sandbox-leaderboard-blue.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAuMiAxNS40VjguNmMxLjktLjUgMy4zLTIuMiAzLjMtNC4yIDAtMi40LTItNC40LTQuNC00LjRzLTQuNCAyLTQuNCA0LjRjMCAuNS4xIDEgLjMgMS41TDguNSA5LjVjLS43LTEuMi0yLjEtMi0zLjYtMi0yLjQgMC00LjQgMi00LjQgNC40czIgNC40IDQuNCA0LjRjMS4zIDAgMi40LS41IDMuMi0xLjRsNi43IDMuOWMtLjEuMi0uMS41LS4xLjggMCAyLjQgMiA0LjQgNC40IDQuNHM0LjQtMiA0LjQtNC40YzAtMi0xLjQtMy43LTMuMy00LjJ6TTQuOSAxNC4yYy0xLjIgMC0yLjItMS0yLjItMi4yczEtMi4yIDIuMi0yLjIgMi4yIDEgMi4yIDIuMi0xIDIuMi0yLjIgMi4yem0xNC4yLTEyYzEuMiAwIDIuMiAxIDIuMiAyLjJzLTEgMi4yLTIuMiAyLjItMi4yLTEtMi4yLTIuMiAxLTIuMiAyLjItMi4yem0tMy40IDE0LjZMOS4yIDEzYy4xLS4zLjEtLjcuMS0xdi0uM2w3LTRjLjUuNCAxLjEuNyAxLjcuOXY2LjhjLS45LjItMS43LjctMi4zIDEuNHptMy40IDVjLTEuMiAwLTIuMi0xLTIuMi0yLjJzMS0yLjIgMi4yLTIuMiAyLjIgMSAyLjIgMi4yLTEgMi4yLTIuMiAyLjJ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+)](https://nlpsandbox.io/tools/covid-symptom-annotator/leaderboard "View the performance of this tool on nlpsandbox.io")
 
-[date-annotator-leaderboard]: https://www.synapse.org/#!Synapse:syn22277124/wiki/608039
+[covid-symptom-annotator-leaderboard]: https://www.synapse.org/#!Synapse:syn22277124/wiki/608039
 
-Example implementation of the [NLP Sandbox Date Annotator]
+Example implementation of the [NLP Sandbox COVID Symptom Annotator]
 
 ## Overview
 
-This repository provides a Python-Flask implementation of the [NLP Sandbox Date
-Annotator]. The Date Annotator is one of the first NLP Tools that can be
-benchmarked on [nlpsandbox.io]. A Date Annotator takes as input a clinical
-note and outputs a list of predicted date annotations found in the clinical
-note.
+This repository provides a Python-Flask implementation of the [NLP Sandbox COVID
+Symptom Annotator]. This NLP Sandbox tool takes as input a clinical note and
+outputs a list of predicted date annotations found in the clinical note.
 
 ### Specification
 
 - Date Annotator API version: 1.0.2
 - Tool version: 1.0.2
-- Docker image: [nlpsandbox/date-annotator-example]
+- Docker image: [nlpsandbox/covid-symptom-annotator-example]
 
 ## Model
 
@@ -53,13 +51,13 @@ You can stop the container run with `Ctrl+C`, followed by `docker-compose down`.
 
 We recommend using a Conda environment to install and run the Date Annotator.
 
-    conda create --name date-annotator python=3.9.1
-    conda activate date-annotator
+    conda create --name covid-symptom-annotator python=3.9.4
+    conda activate covid-symptom-annotator
 
 Install and start the Date Annotator.
 
     cd server/
-    pip install -e .
+    pip install -r requirements.txt
     python -m openapi_server
 
 ### Accessing the UI
@@ -89,11 +87,11 @@ This step will depend on your preferred programming language-framework.
 - If you develop in Python-Flask, create a new repository from this [GitHub
   template].
 - If you develop in Java-Spring, create a new repository from the GitHub
-  template [nlpsandbox/date-annotator-example-java].
+  template [nlpsandbox/covid-symptom-annotator-example-java].
 
 If you prefer to develop using another language or if you want to learn how this
 repository has been generated, go to the section [Creating a new Date Annotator
-from scratch](#Creating-a-new-Date-Annotator-from-scratch).
+from scratch](#Creating-a-new-covid-symptom-annotator-from-scratch).
 
 ### Configuring the CI/CD workflow
 
@@ -139,7 +137,7 @@ framework supported by [OpenAPITools/openapi-generator].
 
 1. Download the latest OpenAPI specification of the [NLP Sandbox Date Annotator].
 
-       curl -fO https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/latest/openapi.yaml
+       curl -fO https://nlpsandbox.github.io/nlpsandbox-schemas/covid-symptom-annotator/latest/openapi.yaml
 
 2. Copy the file [package.json] from this repository to your project.
 3. Install the development tools defined in *package.json*
@@ -184,11 +182,11 @@ new release of the Date Annotator specification is available:
 
 1. Create a new branch
 
-       git checkout -b update-to-specification-x.y.z
+       git checkout -b upcovid-symptom-to-specification-x.y.z
 
 2. Download the latest OpenAPI specification of the Date Annotator.
 
-       curl -fO https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/latest/openapi.yaml
+       curl -fO https://nlpsandbox.github.io/nlpsandbox-schemas/covid-symptom-annotator/latest/openapi.yaml
 
 3. Re-run the OpenAPI generator using the same command that you have used to
    generated the initial server stub.
@@ -248,12 +246,12 @@ Thinking about contributing to this project? Get started by reading our
 
 [nlpsandbox.io]: https://www.synapse.org/nlpsandbox
 [NLP Sandbox]: https://www.synapse.org/nlpsandbox
-[NLP Sandbox Date Annotator]: https://nlpsandbox.github.io/nlpsandbox-schemas/date-annotator/latest/docs/
-[nlpsandbox/date-annotator-example]: https://hub.docker.com/r/nlpsandbox/date-annotator-example
-[GitHub template]: https://github.com/nlpsandbox/date-annotator-example/generate
+[NLP Sandbox COVID Symptom Annotator]: https://nlpsandbox.github.io/nlpsandbox-schemas/covid-symptom-annotator/latest/docs/
+[nlpsandbox/covid-symptom-annotator-example]: https://hub.docker.com/r/nlpsandbox/covid-symptom-annotator-example
+[GitHub template]: https://github.com/nlpsandbox/covid-symptom-annotator-example/generate
 [NLP Sandbox]: nlpsandbox.io
-[nlpsandbox/date-annotator-example-java]: https://github.com/nlpsandbox/date-annotator-example-java
-[Apache License 2.0]: https://github.com/nlpsandbox/date-annotator-example/blob/develop/LICENSE
+[nlpsandbox/covid-symptom-annotator-example-java]: https://github.com/nlpsandbox/covid-symptom-annotator-example-java
+[Apache License 2.0]: https://github.com/nlpsandbox/covid-symptom-annotator-example/blob/develop/LICENSE
 [Patient schema]: https://github.com/nlpsandbox/nlpsandbox-schemas/blob/develop/openapi/commons/components/schemas/Patient.yaml
 [nlpsandbox/nlpsandbox-schemas]: https://github.com/nlpsandbox/nlpsandbox-schemas
 [semantic versioning]: https://semver.org/
