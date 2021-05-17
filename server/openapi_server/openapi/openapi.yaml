@@ -27,7 +27,7 @@ info:
     name: Apache 2.0
     url: https://github.com/nlpsandbox/nlpsandbox-schemas/blob/develop/LICENSE
   title: NLP Sandbox COVID Symptom Annotator API
-  version: 1.1.0
+  version: 1.1.1
   x-logo:
     url: https://nlpsandbox.github.io/nlpsandbox-schemas/logo.png
 servers:
@@ -276,7 +276,7 @@ components:
         note:
           identifier: awesome-note
           text: |
-            On 12/26/2020, Ms. Chloe Price met with Dr. Prescott in Seattle. She's had a dry cough for almost a week now.
+            The patient had a dry cough and fever or chills yesterday. He is also experiencing new loss of taste today and three days ago.
           type: loinc:LP29684-5
           patientId: awesome-patient
       properties:
@@ -415,7 +415,7 @@ components:
         authorEmail: author@example.com
         url: https://example.com
         type: nlpsandbox:date-annotator
-        apiVersion: 1.1.0
+        apiVersion: 1.1.1
       properties:
         name:
           description: The tool name
@@ -486,7 +486,7 @@ components:
           authorEmail: author@example.com
           url: https://example.com
           type: nlpsandbox:date-annotator
-          apiVersion: 1.1.0
+          apiVersion: 1.1.1
         - name: awesome-nlp-tool
           version: 1.0.6
           license: apache-2.0
@@ -496,7 +496,7 @@ components:
           authorEmail: author@example.com
           url: https://example.com
           type: nlpsandbox:date-annotator
-          apiVersion: 1.1.0
+          apiVersion: 1.1.1
       properties:
         tools:
           description: A list of tools
