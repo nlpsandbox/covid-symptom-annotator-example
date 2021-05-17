@@ -20,8 +20,8 @@ note.
 
 ### Specification
 
-- Date Annotator API version: 1.1.0
-- Tool version: 1.1.0
+- Date Annotator API version: 1.1.1
+- Tool version: 1.1.1
 - Docker image: [nlpsandbox/covid-symptom-annotator-example]
 
 ## Model
@@ -257,4 +257,4 @@ Thinking about contributing to this project? Get started by reading our
 [nlpsandbox/nlpsandbox-schemas]: https://github.com/nlpsandbox/nlpsandbox-schemas
 [semantic versioning]: https://semver.org/
 [OpenAPITools/openapi-generator]: https://github.com/OpenAPITools/openapi-generator
-[Contributor Guide]: CONTRIBUTING.md
+[Contributor Guide]: .github/CONTRIBUTING.md
