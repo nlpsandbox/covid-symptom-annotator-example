@@ -13,15 +13,15 @@ def get_tool():  # noqa: E501
     """
     tool = Tool(
         name="covid-symptom-annotator-example",
-        version="1.1.0",
+        version="1.1.1",
         license=License.APACHE_2_0,
         repository="github:nlpsandbox/covid-symptom-annotator-example",
         description="Example of the NLP Sandbox COVID Symptom Annotator",
-        author="The NLP Sandbox Team",
+        author="NLP Sandbox Team",
         author_email="team@nlpsandbox.io",
         url="https://github.com/nlpsandbox/covid-symptom-annotator-example",
         type="nlpsandbox:covid-symptom-annotator",
-        api_version="1.1.0"
+        api_version="1.1.1"
     )
     return tool, 200
 
