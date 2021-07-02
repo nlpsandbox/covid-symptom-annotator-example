@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   covid-symptom-annotator:
-    image: nlpsandbox/covid-symptom-annotator-example:1.2.0
+    image: docker.synapse.org/syn22277123/covid-symptom-annotator-example:1.2.0
     build:
       context: server
       dockerfile: Dockerfile
