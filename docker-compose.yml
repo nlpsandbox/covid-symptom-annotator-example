@@ -1,12 +1,12 @@
 version: "3.8"
 
 services:
-  date-annotator:
-    image: nlpsandbox/date-annotator-example:1.1.1
+  covid-symptom-annotator:
+    image: nlpsandbox/covid-symptom-annotator-example:1.2.0
     build:
       context: server
       dockerfile: Dockerfile
-    container_name: date-annotator
+    container_name: covid-symptom-annotator
     networks:
       - nlp-sandbox-internal
 
@@ -15,7 +15,7 @@ services:
     container_name: nginx
     restart: always
     environment:
-      - TOOL_HOST=date-annotator
+      - TOOL_HOST=covid-symptom-annotator
       - TOOL_PORT=8080
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -26,7 +26,7 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - date-annotator
+      - covid-symptom-annotator
 
 networks:
   nlp-sandbox:
